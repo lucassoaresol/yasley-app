@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+:root {
+  --fc-today-bg-color: #fff;
+  --fc-button-bg-color: #006cbe;
+  --fc-button-border-color: #006cbe;
+  --fc-button-hover-bg-color: #004b85ff;
+  --fc-button-hover-border-color: #004b85ff;
+  --fc-button-active-bg-color: #599fd5ff;
+  --fc-button-active-border-color: #599fd5ff;
+}
+
+.fc .fc-daygrid-body-natural .fc-daygrid-day-events {
+  margin-bottom: 1px;
+}
+
+.fc-daygrid-dot-event {
+  padding: 1px 0px;
+}
+
+.calendar_cursor_pointer {
+  cursor: pointer;
+  & > :hover {
+    background-color: #e5e5e5ff;
+  }
+}
