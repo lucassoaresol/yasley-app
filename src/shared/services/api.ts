@@ -1,22 +1,40 @@
 import axios from 'axios'
+import { apiAuth } from '../services'
 
-const token = localStorage.getItem('@EMTechs:token')
-const serverUrl = 'https://yasley-api.vercel.app/'
-const localServer = 'http://localhost:4002/'
+const baseURL = 'https://yasley-api.vercel.app/'
+// const baseURL = 'http://localhost:4002/'
 
-const localApi = axios.create({
-  baseURL: localServer,
+export const apiUsingNow = axios.create({
+  baseURL,
   timeout: 100000,
 })
 
-const apiServerSide = axios.create({
-  baseURL: serverUrl,
-  timeout: 100000,
-})
+apiUsingNow.interceptors.request.use(
+  async (config) => {
+    const token = localStorage.getItem('@Engercon:token')
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+  },
+  (error) => {
+    Promise.reject(error)
+  },
+)
 
-if (token) {
-  localApi.defaults.headers.authorization = `Bearer ${token}`
-  apiServerSide.defaults.headers.authorization = `Bearer ${token}`
-}
-
-export const apiUsingNow = apiServerSide
+apiUsingNow.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  async function (error) {
+    const originalRequest = error.config
+    if (error.response.status === 403 && !originalRequest._retry) {
+      originalRequest._retry = true
+      const token = localStorage.getItem('@Engercon:refresh_token')
+      apiAuth.refresh().then((res) => {
+        apiUsingNow.defaults.headers.authorization = `Bearer ${token}`
+        axios.defaults.headers.common.Authorization = `Bearer ${res.token}`
+      })
+      return apiUsingNow(originalRequest)
+    }
+    return Promise.reject(error)
+  },
+)

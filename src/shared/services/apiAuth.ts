@@ -16,6 +16,11 @@ const login = async (data: iLoginRequest): Promise<iLoginResponse> => {
   return response
 }
 
+const refresh = async (): Promise<iLoginResponse> => {
+  const { data: response } = await apiUsingNow.post<iLoginResponse>('token')
+  return response
+}
+
 const recovery = async (data: iRecoveryRequest): Promise<void> => {
   await apiUsingNow.post('password', data)
 }
@@ -48,6 +53,7 @@ const verifyPassword = async (
 
 export const apiAuth = {
   login,
+  refresh,
   recovery,
   passwordRecovery,
   verify,

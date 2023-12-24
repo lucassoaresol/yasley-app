@@ -49,17 +49,7 @@ const page = async (query: string): Promise<iPageReturn> => {
   return response
 }
 
-const profile = async (token: string): Promise<iUserProfile> => {
-  const { data: response } = await apiUsingNow.get<iUserProfile>(
-    'users/profile',
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    },
-  )
-  return response
-}
-
-const refresh = async (): Promise<iUserProfile> => {
+const profile = async (): Promise<iUserProfile> => {
   const { data: response } =
     await apiUsingNow.get<iUserProfile>('users/profile')
   return response
@@ -102,7 +92,6 @@ export const apiUser = {
   createServer,
   page,
   profile,
-  refresh,
   update,
   schools,
   retrieve,

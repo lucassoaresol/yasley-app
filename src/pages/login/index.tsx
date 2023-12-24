@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, IconButton } from '@mui/material'
 import { Login as LoginIcon, LockReset, Info } from '@mui/icons-material'
@@ -6,16 +8,15 @@ import {
   TextFieldElement,
   PasswordElement,
 } from 'react-hook-form-mui'
-import { useAuthContext } from '../../shared/contexts'
-import { useState } from 'react'
-import { loginSchema, recoverySchema } from '../../shared/schemas'
 import {
+  useAuthContext,
   BasePage,
+  loginSchema,
   BoxResp,
-  Glossary,
   ValidateLogin,
-} from '../../shared/components'
-import { Navigate } from 'react-router-dom'
+  recoverySchema,
+  Glossary,
+} from '../../shared'
 
 export const Login = () => {
   const { isAuthenticated, login, recovery } = useAuthContext()

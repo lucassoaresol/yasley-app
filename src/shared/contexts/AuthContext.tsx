@@ -18,7 +18,6 @@ import {
   iChildren,
   useAppThemeContext,
   apiUser,
-  apiUsingNow,
   apiCalendar,
   apiAuth,
 } from '../../shared'
@@ -58,7 +57,7 @@ export const AuthProvider = ({ children }: iChildren) => {
   const handleUserProfile = (newUser: iUserProfile) => setUserProfile(newUser)
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('@EMTechs:token')
+    const accessToken = localStorage.getItem('@Engercon:token')
 
     if (accessToken) {
       setAccessToken(accessToken)
@@ -70,43 +69,42 @@ export const AuthProvider = ({ children }: iChildren) => {
   const refreshUser = useCallback(() => {
     setLoading(true)
     apiUser
-      .refresh()
+      .profile()
       .then((res) => setUserProfile(res))
+      .catch(() => {
+        localStorage.removeItem('@Engercon:token')
+        localStorage.removeItem('@Engercon:refresh_token')
+        setAccessToken(undefined)
+        navigate('/login')
+      })
       .finally(() => setLoading(false))
   }, [])
 
   const profileUser = useCallback(() => {
-    if (accessToken) {
-      setLoading(true)
-      apiUser
-        .profile(accessToken)
-        .then((res) => {
-          apiUsingNow.defaults.headers.authorization = `Bearer ${accessToken}`
-          setUserProfile(res)
-          setDashData(res.dash)
-        })
-        .catch(() => {
-          localStorage.removeItem('@EMTechs:token')
-          setAccessToken(undefined)
-          navigate('/login')
-        })
-        .finally(() => setLoading(false))
+    setLoading(true)
+    apiUser
+      .profile()
+      .then((res) => {
+        setUserProfile(res)
+        setDashData(res.dash)
+      })
+      .finally(() => setLoading(false))
 
-      setLoading(true)
-      apiCalendar
-        .year(accessToken, dayjs().year())
-        .then((res) => {
-          setYearData(res)
-        })
-        .finally(() => setLoading(false))
-    }
-  }, [accessToken])
+    setLoading(true)
+    apiCalendar
+      .year(dayjs().year())
+      .then((res) => {
+        setYearData(res)
+      })
+      .finally(() => setLoading(false))
+  }, [])
 
   const handleLogin = useCallback(async (data: iLoginRequest) => {
     try {
       setLoading(true)
-      const { token } = await apiAuth.login(data)
-      localStorage.setItem('@EMTechs:token', token)
+      const { token, refresh_token } = await apiAuth.login(data)
+      localStorage.setItem('@Engercon:token', token)
+      localStorage.setItem('@Engercon:refresh_token', refresh_token)
       setAccessToken(token)
       handleSucess('Login realizado com sucesso')
     } catch (e) {
@@ -164,7 +162,8 @@ export const AuthProvider = ({ children }: iChildren) => {
   )
 
   const handleLogout = useCallback(() => {
-    localStorage.removeItem('@EMTechs:token')
+    localStorage.removeItem('@Engercon:token')
+    localStorage.removeItem('@Engercon:refresh_token')
     setAccessToken(undefined)
     setUserProfile(undefined)
     setDashData(undefined)

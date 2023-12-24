@@ -26,12 +26,9 @@ const createYear = async (data: FieldValues): Promise<iYear> => {
   return response
 }
 
-const year = async (token: string, year: number): Promise<iYear> => {
+const year = async (year: number): Promise<iYear> => {
   const { data: response } = await apiUsingNow.get<iYear>(
     `/calendar/year/${year}`,
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    },
   )
 
   return response

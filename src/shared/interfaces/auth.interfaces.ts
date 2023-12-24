@@ -5,6 +5,7 @@ export type iLoginRequest = z.infer<typeof loginSchema>
 
 export interface iLoginResponse {
   token: string
+  refresh_token: string
 }
 
 export type iRecoveryRequest = z.infer<typeof recoverySchema>
