@@ -32,6 +32,8 @@ apiUsingNow.interceptors.response.use(
       apiAuth.refresh().then((res) => {
         apiUsingNow.defaults.headers.authorization = `Bearer ${token}`
         axios.defaults.headers.common.Authorization = `Bearer ${res.token}`
+        localStorage.setItem('@Engercon:token', res.token)
+        localStorage.setItem('@Engercon:refresh_token', res.refresh_token)
       })
       return apiUsingNow(originalRequest)
     }
