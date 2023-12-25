@@ -38,7 +38,7 @@ export const OptionsAdmin = () => {
         />
       )}
       <OtherListItemLink icon={<Home />} label="Página Inicial" />
-      <OtherListItemLink icon={<People />} label="Usuários" to="user" />
+      <OtherListItemLink icon={<People />} label="Clientes" to="user" />
       <OtherListItemLink icon={<School />} label="Escolas" to="school" />
       <OtherListItemLink icon={<Workspaces />} label="Turmas" to="class" />
       <OtherListItemLink icon={<Groups />} label="Alunos" to="student" />
