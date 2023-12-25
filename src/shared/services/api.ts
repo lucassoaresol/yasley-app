@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios'
 import { apiAuth } from '../services'
 
-const baseURL = 'https://yasley-api.vercel.app/'
-// const baseURL = 'http://localhost:4002/'
+export const baseURL = 'https://yasley-api.vercel.app/'
+// export const baseURL = 'http://localhost:4002/'
 
 export const apiUsingNow = axios.create({
   baseURL,
@@ -28,14 +29,19 @@ apiUsingNow.interceptors.response.use(
     const originalRequest = error.config
     if (error.response.status === 403 && !originalRequest._retry) {
       originalRequest._retry = true
-      const token = localStorage.getItem('@Engercon:refresh_token')
-      apiAuth.refresh().then((res) => {
-        apiUsingNow.defaults.headers.authorization = `Bearer ${token}`
-        axios.defaults.headers.common.Authorization = `Bearer ${res.token}`
-        localStorage.setItem('@Engercon:token', res.token)
-        localStorage.setItem('@Engercon:refresh_token', res.refresh_token)
-      })
-      return apiUsingNow(originalRequest)
+      const tokenLocal = String(localStorage.getItem('@Engercon:refresh_token'))
+
+      try {
+        const { refresh_token, token } = await apiAuth.refresh(tokenLocal)
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`
+        localStorage.setItem('@Engercon:token', token)
+        localStorage.setItem('@Engercon:refresh_token', refresh_token)
+        return apiUsingNow(originalRequest)
+      } catch (error: any) {
+        if (error.response && error.response.data) {
+          return Promise.reject(error.response.data)
+        }
+      }
     }
     return Promise.reject(error)
   },

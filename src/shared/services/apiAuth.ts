@@ -1,4 +1,5 @@
-import { apiUsingNow } from './api'
+import axios from 'axios'
+import { baseURL } from './api'
 import {
   iLoginRequest,
   iLoginResponse,
@@ -8,6 +9,11 @@ import {
   iYear,
 } from '../interfaces'
 
+const apiUsingNow = axios.create({
+  baseURL,
+  timeout: 100000,
+})
+
 const login = async (data: iLoginRequest): Promise<iLoginResponse> => {
   const { data: response } = await apiUsingNow.post<iLoginResponse>(
     'login',
@@ -16,8 +22,14 @@ const login = async (data: iLoginRequest): Promise<iLoginResponse> => {
   return response
 }
 
-const refresh = async (): Promise<iLoginResponse> => {
-  const { data: response } = await apiUsingNow.post<iLoginResponse>('token')
+const refresh = async (token: string): Promise<iLoginResponse> => {
+  const { data: response } = await apiUsingNow.post<iLoginResponse>(
+    'token',
+    undefined,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+  )
   return response
 }
 
