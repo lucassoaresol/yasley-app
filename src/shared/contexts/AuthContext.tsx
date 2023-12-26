@@ -68,12 +68,6 @@ export const AuthProvider = ({ children }: iChildren) => {
     apiUser
       .profile()
       .then((res) => setUserProfile(res))
-      .catch(() => {
-        localStorage.removeItem('@Engercon:token')
-        localStorage.removeItem('@Engercon:refresh_token')
-        setAccessToken(undefined)
-        navigate('/login')
-      })
       .finally(() => setLoading(false))
   }, [])
 
