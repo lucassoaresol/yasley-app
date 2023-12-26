@@ -1,3 +1,2 @@
-export * from './Config'
 export * from './Drawer'
-export * from './Perfil'
+export * from './Layout'

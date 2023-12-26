@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { ReactNode, SyntheticEvent } from 'react'
+import { MouseEvent, ReactNode, SyntheticEvent } from 'react'
 import { avatarSchema } from '../schemas'
 
 export interface iChildren {
@@ -77,3 +77,18 @@ export interface iTable extends iTableBase {
 export type iLocale = 'list' | 'data'
 
 export type iAvatarRequest = z.infer<typeof avatarSchema>
+
+type option = {
+  to: string
+  value: string
+}
+
+export interface iMenuLayoutProps {
+  title: string
+  icon: ReactNode
+  anchorEl: HTMLElement | null
+  open: boolean
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void
+  onClose: () => void
+  options: option[]
+}

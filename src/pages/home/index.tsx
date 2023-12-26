@@ -10,11 +10,11 @@ interface iHomePageProps {
 
 export const HomePage = ({ isHome }: iHomePageProps) => {
   const { theme, mdDown } = useAppThemeContext()
-  const { isAuthenticated, userProfile } = useAuthContext()
+  const { isAuthenticated } = useAuthContext()
 
   if (!isAuthenticated) return <Navigate to="/login" />
 
-  if (userProfile?.role === 'ADMIN' && !isHome) return <HomePageAdmin />
+  if (!isHome) return <HomePageAdmin />
 
   return (
     <Box display="flex" flexDirection="column">

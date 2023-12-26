@@ -1,8 +1,8 @@
 import { MouseEvent, useState } from 'react'
 import { Box, Typography, Avatar } from '@mui/material'
+import { AccountCircle, Settings } from '@mui/icons-material'
 import {
-  MenuConfig,
-  MenuPerfil,
+  MenuLayout,
   adaptName,
   useAppThemeContext,
   useAuthContext,
@@ -43,17 +43,30 @@ export const HeaderLayout = () => {
   return (
     <Box pt={1} pl={1} pr={2} display="flex" justifyContent="space-between">
       <Box display="flex">
-        <MenuPerfil
+        <MenuLayout
           anchorEl={anchorEl}
           onClick={handleClickPerfil}
           onClose={handleClosePerfil}
           open={openPerfil}
+          title="Perfil"
+          icon={<AccountCircle fontSize="small" />}
+          options={[
+            { to: '/profile/edit', value: 'Editar Perfil' },
+            { to: '/profile/edit/password', value: 'Editar Senha' },
+          ]}
         />
-        <MenuConfig
+        <MenuLayout
           anchorEl={anchorEl}
           onClick={handleClickConfig}
           onClose={handleCloseConfig}
           open={openConfig}
+          title="Configurações"
+          icon={<Settings fontSize="small" />}
+          options={[
+            { to: '/user', value: 'Usuários' },
+            { to: '/user', value: 'Permissões' },
+            { to: '/user', value: 'Categorias' },
+          ]}
         />
       </Box>
       <Box display="flex" alignItems="center" gap={1}>

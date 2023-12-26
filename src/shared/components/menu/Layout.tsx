@@ -1,6 +1,4 @@
-import { MouseEvent } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Settings } from '@mui/icons-material'
 import {
   IconButton,
   List,
@@ -9,25 +7,22 @@ import {
   Menu,
   Tooltip,
 } from '@mui/material'
+import { iMenuLayoutProps } from '../../../shared'
 
-interface iMenuConfigProps {
-  anchorEl: HTMLElement | null
-  open: boolean
-  onClick: (event: MouseEvent<HTMLButtonElement>) => void
-  onClose: () => void
-}
-
-export const MenuConfig = ({
+export const MenuLayout = ({
   anchorEl,
+  icon,
   onClick,
   onClose,
   open,
-}: iMenuConfigProps) => {
+  options,
+  title,
+}: iMenuLayoutProps) => {
   const location = useLocation()
 
   return (
     <>
-      <Tooltip title="Configurações">
+      <Tooltip title={title}>
         <IconButton
           id="basic-button"
           aria-controls={open ? 'basic-menu' : undefined}
@@ -35,7 +30,7 @@ export const MenuConfig = ({
           aria-expanded={open ? 'true' : undefined}
           onClick={onClick}
         >
-          <Settings fontSize="small" />
+          {icon}
         </IconButton>
       </Tooltip>
       <Menu
@@ -48,15 +43,18 @@ export const MenuConfig = ({
         }}
       >
         <List component="div" disablePadding>
-          <ListItemButton
-            autoFocus={true}
-            onClick={onClose}
-            component={Link}
-            to="/user"
-            selected={location.pathname === '/user'}
-          >
-            <ListItemText primary="Usuários" />
-          </ListItemButton>
+          {options.map((el) => (
+            <ListItemButton
+              key={el.value}
+              autoFocus={true}
+              onClick={onClose}
+              component={Link}
+              to={el.to}
+              selected={location.pathname === el.to}
+            >
+              <ListItemText primary={el.value} />
+            </ListItemButton>
+          ))}
         </List>
       </Menu>
     </>
