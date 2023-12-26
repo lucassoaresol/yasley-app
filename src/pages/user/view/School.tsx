@@ -74,7 +74,7 @@ export const ViewUserSchoolPage = () => {
         tools={<Tools isBack isNew titleNew="Nova" isSearch isReset />}
       >
         <TabsUserRetrievePage value="school" />
-        <TableUserSchoolPage listData={listData} getData={list} />
+        <TableUserSchoolPage listData={listData} />
         <Footer />
       </LayoutBasePage>
       {userSelect && (

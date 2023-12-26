@@ -1,27 +1,27 @@
+import { useEffect, useState } from 'react'
+import { Navigate } from 'react-router-dom'
+import { Box, Card, CardContent, Grid, Paper } from '@mui/material'
+import { Checklist, EventBusy, Groups, Workspaces } from '@mui/icons-material'
 import {
+  CalendarFrequency,
+  Footer,
+  GridDashContent,
+  GridDashOrgan,
+  LayoutBasePage,
+  apiUsingNow,
+  iDashClass,
   useAppThemeContext,
   useAuthContext,
   useCalendarContext,
   useClassContext,
   useSchoolContext,
-} from '../../../shared/contexts'
-import { Box, Card, CardContent, Grid, Paper } from '@mui/material'
-import { LayoutBasePage } from '../../../shared/layouts'
-import {
-  CalendarFrequencyAdm,
-  Footer,
-  GridDashContent,
-} from '../../../shared/components'
-import { iDashClass } from '../../../shared/interfaces'
-import { useEffect, useState } from 'react'
-import { Checklist, EventBusy, Groups, Workspaces } from '@mui/icons-material'
+} from '../../shared'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import 'dayjs/locale/pt-br'
-import { apiUsingNow } from '../../../shared/services'
 dayjs.extend(localizedFormat)
 
-export const CreateFrequencyAdm = () => {
+export const CreateFrequencyPage = () => {
   const { theme, setLoading } = useAppThemeContext()
   const { yearData } = useAuthContext()
   const { schoolRetrieve } = useSchoolContext()
@@ -42,8 +42,54 @@ export const CreateFrequencyAdm = () => {
     }
   }, [classWithSchoolSelect, schoolRetrieve, monthData, yearData])
 
+  if (!schoolRetrieve) {
+    return <Navigate to="/" />
+  }
+
+  // const title = (
+  //   <Breadcrumbs aria-label="breadcrumb">
+  //     <LinkRouter
+  //       underline="none"
+  //       color="inherit"
+  //       to="/"
+  //       onClick={handleClickButtonTools}
+  //     >
+  //       <Chip
+  //         clickable
+  //         color="primary"
+  //         variant="outlined"
+  //         label={schoolData?.name}
+  //         icon={<School sx={{ mr: 0.5 }} fontSize="inherit" />}
+  //       />
+  //     </LinkRouter>
+  //     {classWithSchoolSelect && (
+  //       <LinkRouter
+  //         underline="none"
+  //         color="inherit"
+  //         to="/frequency/create"
+  //         onClick={() => {
+  //           setClassWithSchoolSelect(undefined);
+  //         }}
+  //       >
+  //         <Chip
+  //           clickable
+  //           color="primary"
+  //           variant="outlined"
+  //           label={classWithSchoolSelect.class.name}
+  //           icon={<Workspaces sx={{ mr: 0.5 }} fontSize="inherit" />}
+  //         />
+  //       </LinkRouter>
+  //     )}
+  //     <Chip
+  //       label="Frequência"
+  //       color="primary"
+  //       icon={<AddBox sx={{ mr: 0.5 }} fontSize="inherit" />}
+  //     />
+  //   </Breadcrumbs>
+  // );
+
   return (
-    <LayoutBasePage title="Nova Frequência">
+    <LayoutBasePage title="">
       <Box my={1} mx={2} component={Paper} variant="outlined">
         <Card>
           <CardContent>
@@ -63,7 +109,7 @@ export const CreateFrequencyAdm = () => {
                     flexDirection="column"
                     gap={1}
                   >
-                    <CalendarFrequencyAdm />
+                    <CalendarFrequency />
                   </Box>
                 </Grid>
                 <Grid container item direction="row" xs={12} md={5} spacing={2}>
@@ -109,21 +155,7 @@ export const CreateFrequencyAdm = () => {
                       />
                     </>
                   )}
-                  <Grid item xs={12}>
-                    <Card>
-                      <CardContent>
-                        <Box
-                          display="flex"
-                          justifyContent="space-evenly"
-                          alignItems="center"
-                          gap={1}
-                        >
-                          <img width="50%" src="/pref.png" />
-                          <img width="25%" src="/emtechs.jpg" />
-                        </Box>
-                      </CardContent>
-                    </Card>
-                  </Grid>
+                  <GridDashOrgan />
                 </Grid>
               </Grid>
             </Grid>

@@ -10,20 +10,13 @@ import {
   Skeleton,
   Typography,
 } from '@mui/material'
-import { Delete, ExpandMore, RemoveDone } from '@mui/icons-material'
-import {
-  useDialogContext,
-  iUser,
-  apiUser,
-  ButtonSmDown,
-  useAuthContext,
-} from '../../../shared'
-import { DialogActiveUser, DialogDeleteUser } from '../components'
+import { ExpandMore, RemoveDone } from '@mui/icons-material'
+import { useDialogContext, iUser, apiUser, ButtonSmDown } from '../../../shared'
+import { DialogActiveUser } from '../components'
 
 export const ViewRetrieveUserPage = () => {
   const { user_id } = useParams()
-  const { userProfile } = useAuthContext()
-  const { handleOpenActive, handleOpenEdit } = useDialogContext()
+  const { handleOpenActive } = useDialogContext()
   const [loadingUser, setLoadingUser] = useState(true)
   const [userRetrieve, setUserRetrieve] = useState<iUser>()
 
@@ -68,18 +61,9 @@ export const ViewRetrieveUserPage = () => {
             startIcon={<RemoveDone />}
             onClick={handleOpenActive}
           />
-          {userProfile?.is_super && (
-            <ButtonSmDown
-              title="Excluir"
-              color="warning"
-              startIcon={<Delete />}
-              onClick={handleOpenEdit}
-            />
-          )}
         </CardActions>
       </Card>
       {userRetrieve && <DialogActiveUser user={userRetrieve} />}
-      {userRetrieve && <DialogDeleteUser user={userRetrieve} />}
     </>
   )
 }

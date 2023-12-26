@@ -8,7 +8,6 @@ import {
   TableBase,
   LinkText,
   TableCellDataLoading,
-  rolePtBr,
   ActionsActive,
   useParamsContext,
 } from '../../../../shared'
@@ -46,7 +45,6 @@ export const TableUserPage = ({
     return [
       { order: 'name', numeric: 'left', label: 'Nome Completo' },
       { numeric: 'left', label: 'CPF' },
-      { order: 'role', numeric: 'left', label: 'Função' },
       { numeric: 'left', label: 'Ações' },
     ]
   }, [mdDown])
@@ -54,7 +52,7 @@ export const TableUserPage = ({
   return (
     <TableBase headCells={headCells} message="Nenhum usuário encotrado">
       {data.map((user) => {
-        const { id, name, is_active, cpf, role } = user
+        const { id, name, is_active, cpf } = user
         const to = `/user/${user.id}`
         const handleData = () => handleUser(user)
 
@@ -76,17 +74,11 @@ export const TableUserPage = ({
             <TableCellDataLoading loading={isLoading}>
               {cpf}
             </TableCellDataLoading>
-            {!mdDown && (
-              <TableCellDataLoading loading={isLoading}>
-                {rolePtBr(role)}
-              </TableCellDataLoading>
-            )}
             <ActionsActive
               handleData={handleData}
               is_active={is_active}
               to={to}
               back="/user"
-              role={role}
             />
           </TableRow>
         )

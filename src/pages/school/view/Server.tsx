@@ -41,8 +41,6 @@ export const ViewSchoolServerPage = () => {
     [school_id],
   )
 
-  const getData = () => getServer('')
-
   useEffect(() => {
     if (search) {
       const query_data = `&name=${search}`
@@ -78,7 +76,7 @@ export const ViewSchoolServerPage = () => {
         }
       >
         <TabsSchoolRetrievePage value="server" />
-        <TableSchoolServerPage getData={getData} listData={listData} />
+        <TableSchoolServerPage listData={listData} />
         <Footer />
       </LayoutBasePage>
       <DialogCreateServer getServer={getServer} school_id={school_id} />

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
-import { useAuthContext } from '../../contexts'
-import { CompLoading, First } from '../../components'
+import { CompLoading, First, useAuthContext } from '../../../shared'
 
 export const ProtectedAuth = () => {
   const { profileUser, isAuthenticated } = useAuthContext()

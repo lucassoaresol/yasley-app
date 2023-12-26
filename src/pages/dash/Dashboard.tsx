@@ -4,7 +4,6 @@ import { Outlet, useParams } from 'react-router-dom'
 import {
   useAppThemeContext,
   useVerifySchool,
-  useVerifyDisplay,
   LayoutBasePage,
   TitleSchoolDashPage,
   CalendarDashCommon,
@@ -16,12 +15,10 @@ export const DashboardSchoolPage = () => {
   const { view, school_id } = useParams()
   const { theme } = useAppThemeContext()
   const { verifySchool } = useVerifySchool()
-  const { verifyDisplay } = useVerifyDisplay()
 
   useEffect(() => {
-    verifyDisplay()
     if (school_id) verifySchool(school_id)
-  }, [school_id, verifyDisplay, verifySchool])
+  }, [school_id, verifySchool])
 
   if (view) return <Outlet />
 

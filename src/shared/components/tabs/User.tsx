@@ -18,7 +18,6 @@ export const TabsUserRetrievePage = ({
     {
       icon: <School />,
       label: 'Escolas',
-      disabled: userRetrieve?.role === 'ADMIN',
       value: 'school',
       href: `${href}/school`,
     },

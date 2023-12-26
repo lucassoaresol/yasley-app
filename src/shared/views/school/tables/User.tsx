@@ -1,14 +1,12 @@
 import { TableRow, TableCell } from '@mui/material'
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import {
   iSchoolUser,
   useAppThemeContext,
   iHeadCell,
   TableBase,
-  rolePtBr,
-  ActionsRemove,
   DialogCreateServer,
-} from '../../..'
+} from '../../../../shared'
 
 interface iTableUserSchoolProps {
   data: iSchoolUser[]
@@ -22,9 +20,6 @@ export const TableUserSchool = ({
   school_id,
 }: iTableUserSchoolProps) => {
   const { mdDown } = useAppThemeContext()
-  const [userData, setUserData] = useState<iSchoolUser>()
-
-  const handleUser = (newUser: iSchoolUser) => setUserData(newUser)
 
   const headCells: iHeadCell[] = useMemo(() => {
     if (mdDown)
@@ -37,8 +32,6 @@ export const TableUserSchool = ({
     return [
       { order: 'name', numeric: 'left', label: 'Nome Completo' },
       { numeric: 'left', label: 'CPF' },
-      { numeric: 'left', label: 'Função' },
-      { numeric: 'left', label: 'Tela' },
       { numeric: 'left', label: 'Ações' },
     ]
   }, [mdDown])
@@ -46,25 +39,14 @@ export const TableUserSchool = ({
   return (
     <>
       <TableBase headCells={headCells}>
-        {data.map((user) => {
-          const handleData = () => handleUser(user)
-          return (
-            <TableRow key={user.id} hover>
-              <TableCell>{user.name}</TableCell>
-              <TableCell>{user.cpf}</TableCell>
-              {!mdDown && <TableCell>{rolePtBr(user.role)}</TableCell>}
-              {!mdDown && (
-                <TableCell>
-                  {user.dash === 'SCHOOL' ? 'Escola' : 'Frequência'}
-                </TableCell>
-              )}
-              <ActionsRemove handleData={handleData} />
-            </TableRow>
-          )
-        })}
+        {data.map((user) => (
+          <TableRow key={user.id} hover>
+            <TableCell>{user.name}</TableCell>
+            <TableCell>{user.cpf}</TableCell>
+          </TableRow>
+        ))}
       </TableBase>
       <DialogCreateServer getServer={getServer} school_id={school_id} />
-      {userData && <></>}
     </>
   )
 }
