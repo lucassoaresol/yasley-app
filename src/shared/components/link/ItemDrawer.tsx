@@ -1,7 +1,6 @@
-import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import { ReactNode, useMemo } from 'react'
-import { useLocation, Link } from 'react-router-dom'
-import { useDrawerContext } from '../../../../contexts'
+import { useLocation } from 'react-router-dom'
+import { ListItemLink, useDrawerContext } from '../../../shared'
 
 export interface iOtherListItemLinkProps {
   icon: ReactNode
@@ -10,7 +9,7 @@ export interface iOtherListItemLinkProps {
   to?: string
 }
 
-export const OtherListItemLink = ({
+export const ListItemDrawerLink = ({
   icon,
   label,
   baseHref = '/',
@@ -30,18 +29,15 @@ export const OtherListItemLink = ({
     }
 
     return location.pathname === href || location.pathname.includes(href + '/')
-  }, [baseHref, href, location])
+  }, [baseHref.length, href, location.pathname, to])
 
   return (
-    <ListItemButton
-      autoFocus={true}
+    <ListItemLink
       onClick={handleClick}
       selected={selected}
-      component={Link}
       to={href}
-    >
-      <ListItemIcon>{icon}</ListItemIcon>
-      <ListItemText primary={label} />
-    </ListItemButton>
+      icon={icon}
+      label={label}
+    />
   )
 }

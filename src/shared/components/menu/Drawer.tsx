@@ -1,15 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {
-  Badge,
-  Box,
-  Divider,
-  Drawer,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material'
+import { Badge, Box, Divider, Drawer, List } from '@mui/material'
 import {
   Checklist,
   Groups,
@@ -22,12 +13,13 @@ import {
   Workspaces,
 } from '@mui/icons-material'
 import {
+  ButtonListItem,
   DialogBase,
+  ListItemDrawerLink,
   useAppThemeContext,
   useAuthContext,
   useDrawerContext,
 } from '../../../shared'
-import { OtherListItemLink } from './components'
 
 export const MenuDrawer = () => {
   const navigate = useNavigate()
@@ -60,7 +52,7 @@ export const MenuDrawer = () => {
           <Box flex={1}>
             <List component="nav">
               {userProfile && userProfile.requests > 0 && (
-                <OtherListItemLink
+                <ListItemDrawerLink
                   icon={
                     <Badge badgeContent={userProfile.requests} color="primary">
                       <LibraryAddCheck />
@@ -70,39 +62,27 @@ export const MenuDrawer = () => {
                   to="request"
                 />
               )}
-              <OtherListItemLink icon={<Home />} label="Página Inicial" />
-              <OtherListItemLink icon={<People />} label="Clientes" to="user" />
-              <OtherListItemLink
-                icon={<School />}
-                label="Escolas"
-                to="school"
-              />
-              <OtherListItemLink
-                icon={<Workspaces />}
-                label="Turmas"
-                to="class"
-              />
-              <OtherListItemLink
-                icon={<Groups />}
-                label="Alunos"
-                to="student"
-              />
-              <OtherListItemLink
-                icon={<Checklist />}
-                label="Frequências"
-                to="frequency"
-              />
-              <OtherListItemLink icon={<Today />} label="Período" to="period" />
+              {[
+                { icon: <Home />, label: 'Página Inicial' },
+                { icon: <People />, label: 'Clientes', to: 'user' },
+                { icon: <School />, label: 'Escolas', to: 'school' },
+                { icon: <Workspaces />, label: 'Turmas', to: 'class' },
+                { icon: <Groups />, label: 'Alunos', to: 'student' },
+                { icon: <Checklist />, label: 'Frequências', to: 'frequency' },
+                { icon: <Today />, label: 'Período', to: 'period' },
+              ].map((el) => (
+                <ListItemDrawerLink
+                  key={el.label}
+                  icon={el.icon}
+                  label={el.label}
+                  to={el.to}
+                />
+              ))}
             </List>
           </Box>
           <Box>
             <List component="nav">
-              <ListItemButton onClick={logout}>
-                <ListItemIcon>
-                  <Logout />
-                </ListItemIcon>
-                <ListItemText primary="Sair" />
-              </ListItemButton>
+              <ButtonListItem icon={<Logout />} label="Sair" onClick={logout} />
             </List>
           </Box>
         </Box>

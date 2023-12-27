@@ -1,5 +1,7 @@
 export * from './Cell'
 export * from './Chip'
 export * from './Icon'
+export * from './Item'
+export * from './ItemDrawer'
 export * from './Row'
 export * from './Text'

@@ -1,13 +1,6 @@
-import { Link, useLocation } from 'react-router-dom'
-import {
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemText,
-  Menu,
-  Tooltip,
-} from '@mui/material'
-import { iMenuLayoutProps } from '../../../shared'
+import { useLocation } from 'react-router-dom'
+import { IconButton, List, Menu, Tooltip } from '@mui/material'
+import { ListItemLink, iMenuLayoutProps } from '../../../shared'
 
 export const MenuLayout = ({
   anchorEl,
@@ -44,16 +37,13 @@ export const MenuLayout = ({
       >
         <List component="div" disablePadding>
           {options.map((el) => (
-            <ListItemButton
+            <ListItemLink
               key={el.value}
-              autoFocus={true}
               onClick={onClose}
-              component={Link}
               to={el.to}
               selected={location.pathname === el.to}
-            >
-              <ListItemText primary={el.value} />
-            </ListItemButton>
+              label={el.value}
+            />
           ))}
         </List>
       </Menu>
