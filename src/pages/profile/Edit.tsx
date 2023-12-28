@@ -1,3 +1,7 @@
+import { useState } from 'react'
+import { Outlet, useNavigate, useParams } from 'react-router-dom'
+import { FormContainer, TextFieldElement } from 'react-hook-form-mui'
+import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Avatar,
   Box,
@@ -9,14 +13,9 @@ import {
   Tooltip,
 } from '@mui/material'
 import { Edit } from '@mui/icons-material'
-import { Outlet, useNavigate, useParams } from 'react-router-dom'
-import { FormContainer, TextFieldElement } from 'react-hook-form-mui'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useCallback, useEffect, useState } from 'react'
 import {
   useAuthContext,
   useAppThemeContext,
-  iUser,
   iUserUpdateRequest,
   apiUser,
   iAvatarRequest,
@@ -34,9 +33,8 @@ import {
 export const EditProfilePage = () => {
   const navigate = useNavigate()
   const { view } = useParams()
-  const { handleUserProfile } = useAuthContext()
+  const { userProfile, profileUser } = useAuthContext()
   const { setLoading, handleSucess, handleError } = useAppThemeContext()
-  const [userData, setUserData] = useState<iUser>()
   const [open, setOpen] = useState(false)
 
   const onClose = () => setOpen((old) => !old)
@@ -46,7 +44,7 @@ export const EditProfilePage = () => {
       setLoading(true)
       await apiUser.update(id, data)
       handleSucess('Dados alterado com sucesso')
-      getUser()
+      profileUser()
       navigate('/')
     } catch {
       handleError('Não foi possível atualizar os dados no momento!')
@@ -63,26 +61,13 @@ export const EditProfilePage = () => {
       if (data.avatar) dataImage.append('image', data.avatar)
       await apiImage.createUser(dataImage)
       handleSucess('Foto alterada com sucesso')
-      getUser()
+      profileUser()
     } catch {
       handleError('Não foi possível atualizar a foto no momento!')
     } finally {
       setLoading(false)
     }
   }
-
-  const getUser = useCallback(() => {
-    setLoading(true)
-    apiUser
-      .page('')
-      .then((res) => {
-        setUserData(res.user)
-        handleUserProfile(res.user)
-      })
-      .finally(() => setLoading(false))
-  }, [])
-
-  useEffect(() => getUser(), [])
 
   if (view) return <Outlet />
 
@@ -101,9 +86,12 @@ export const EditProfilePage = () => {
         }
       >
         <FormContainer
-          values={{ name: userData?.name || '', email: userData?.email || '' }}
+          values={{
+            name: userProfile?.name || '',
+            email: userProfile?.email || '',
+          }}
           onSuccess={(data) => {
-            if (userData) updateUser(userData.id, data)
+            if (userProfile) updateUser(userProfile.id, data)
           }}
           resolver={zodResolver(userUpdateSchema)}
         >
@@ -131,7 +119,7 @@ export const EditProfilePage = () => {
                 <Tooltip title="Alterar foto">
                   <IconButton size="small" onClick={onClose}>
                     <Avatar
-                      src={userData?.profile?.url}
+                      src={userProfile?.profile?.url}
                       sx={{ width: '150px', height: '150px' }}
                     />
                   </IconButton>

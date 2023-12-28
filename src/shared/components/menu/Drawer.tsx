@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Badge, Box, Divider, Drawer, List } from '@mui/material'
 import {
   Checklist,
@@ -16,12 +16,14 @@ import {
   ButtonListItem,
   DialogBase,
   ListItemDrawerLink,
+  ListItemLink,
   useAppThemeContext,
   useAuthContext,
   useDrawerContext,
 } from '../../../shared'
 
 export const MenuDrawer = () => {
+  const location = useLocation()
   const navigate = useNavigate()
   const { theme, smDown } = useAppThemeContext()
   const { isDrawerOpen, toggleDrawerOpen } = useDrawerContext()
@@ -63,19 +65,20 @@ export const MenuDrawer = () => {
                 />
               )}
               {[
-                { icon: <Home />, label: 'Página Inicial' },
-                { icon: <People />, label: 'Clientes', to: 'user' },
-                { icon: <School />, label: 'Escolas', to: 'school' },
-                { icon: <Workspaces />, label: 'Turmas', to: 'class' },
-                { icon: <Groups />, label: 'Alunos', to: 'student' },
-                { icon: <Checklist />, label: 'Frequências', to: 'frequency' },
-                { icon: <Today />, label: 'Período', to: 'period' },
+                { icon: <Home />, label: 'Página Inicial', to: '/' },
+                { icon: <People />, label: 'Clientes', to: '/user' },
+                { icon: <School />, label: 'Escolas', to: '/school' },
+                { icon: <Workspaces />, label: 'Turmas', to: '/class' },
+                { icon: <Groups />, label: 'Alunos', to: '/student' },
+                { icon: <Checklist />, label: 'Frequências', to: '/frequency' },
+                { icon: <Today />, label: 'Período', to: '/period' },
               ].map((el) => (
-                <ListItemDrawerLink
+                <ListItemLink
                   key={el.label}
                   icon={el.icon}
-                  label={el.label}
                   to={el.to}
+                  selected={location.pathname === el.to}
+                  label={el.label}
                 />
               ))}
             </List>

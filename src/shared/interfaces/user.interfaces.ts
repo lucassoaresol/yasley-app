@@ -13,6 +13,7 @@ import {
 export interface iUserProfile {
   id: string
   name: string
+  email?: string
   is_first_access: boolean
   profile?: {
     url: string
