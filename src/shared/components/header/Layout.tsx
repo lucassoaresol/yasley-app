@@ -64,8 +64,8 @@ export const HeaderLayout = () => {
           icon={<Settings fontSize="small" />}
           options={[
             { to: '/user', value: 'Usuários' },
-            { to: '/user', value: 'Permissões' },
-            { to: '/user', value: 'Categorias' },
+            // { to: '/user', value: 'Permissões' },
+            { to: '/category', value: 'Categorias' },
           ]}
         />
       </Box>

@@ -9,12 +9,12 @@ a {
 
 :root {
   --fc-today-bg-color: #fff;
-  --fc-button-bg-color: #006cbe;
-  --fc-button-border-color: #006cbe;
-  --fc-button-hover-bg-color: #004b85ff;
-  --fc-button-hover-border-color: #004b85ff;
-  --fc-button-active-bg-color: #599fd5ff;
-  --fc-button-active-border-color: #599fd5ff;
+  --fc-button-bg-color: #102635;
+  --fc-button-border-color: #102635;
+  --fc-button-hover-bg-color: #0B1A25;
+  --fc-button-hover-border-color: #0B1A25;
+  --fc-button-active-bg-color: #e1a02c;
+  --fc-button-active-border-color: #e1a02c;
 }
 
 .fc .fc-daygrid-body-natural .fc-daygrid-day-events {

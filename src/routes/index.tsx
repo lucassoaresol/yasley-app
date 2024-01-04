@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import {
+  CategoryPage,
   ClassPage,
   DashboardSchoolPage,
   DataDashboardSchoolPage,
@@ -34,6 +35,11 @@ const AppRoutes = () => {
         <Route path="/dash" element={<HomePage isHome />} />
         <Route path="/user" element={<UserPage />}>
           <Route path=":user_id" element={<RetrieveUserPage />}>
+            <Route path=":view" element={<ViewUserPage />} />
+          </Route>
+        </Route>
+        <Route path="/category" element={<CategoryPage />}>
+          <Route path=":category_id" element={<RetrieveUserPage />}>
             <Route path=":view" element={<ViewUserPage />} />
           </Route>
         </Route>
