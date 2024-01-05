@@ -19,12 +19,12 @@ export const BoxResp = ({ children, isLogin, isProfile }: iBoxRespProps) => {
         width="80vw"
       >
         {!isProfile && (
-          <img src="/logo.webp" width="100%" alt="Engercon Engenharia" />
+          <img src="/logo.webp" width="100%" alt="Engercon" />
         )}
         {children}
         {isLogin && (
           <Typography fontSize="0.7rem">
-            {dateData.getUTCFullYear()} © Engercon Engenharia
+            {dateData.getUTCFullYear()} © Engercon
           </Typography>
         )}
       </Box>
@@ -33,12 +33,12 @@ export const BoxResp = ({ children, isLogin, isProfile }: iBoxRespProps) => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
       {!isProfile && (
-        <img src="/logo.webp" width="100%" alt="Engercon Engenharia" />
+        <img src="/logo.webp" width="100%" alt="Engercon" />
       )}
       {children}
       {isLogin && (
         <Typography>
-          {dateData.getUTCFullYear()} © Engercon Engenharia
+          {dateData.getUTCFullYear()} © Engercon
         </Typography>
       )}
     </Box>

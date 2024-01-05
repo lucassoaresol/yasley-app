@@ -15,7 +15,7 @@ export const Footer = () => {
       height={theme.spacing(7)}
     >
       <Typography variant="overline">
-        {dateData.getUTCFullYear()} © Engercon Engenharia
+        {dateData.getUTCFullYear()} © Engercon
       </Typography>
     </Box>
   )

@@ -22,7 +22,7 @@ export const HeaderReport = ({
             justifyContent="space-between"
             alignItems="center"
           >
-            <img src="/logo_out.webp" alt="Engercon Engenharia" />
+            <img src="/logo_out.webp" alt="Engercon" />
             <Box display="flex" gap={1}>
               <Button
                 color="secondary"

@@ -58,7 +58,7 @@ export const Header = ({ isHome }: iHeaderProps) => {
               justifyContent="space-between"
               alignItems="center"
             >
-              <img src="/logo_out.webp" alt="Engercon Engenharia" />
+              <img src="/logo_out.webp" alt="Engercon" />
               {!mdDown && (
                 <Box display="flex" gap={1}>
                   <>

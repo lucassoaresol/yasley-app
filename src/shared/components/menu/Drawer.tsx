@@ -47,8 +47,8 @@ export const MenuDrawer = () => {
           width={theme.spacing(28)}
           height="100%"
         >
-          <Box width="100%" bgcolor={theme.palette.primary.main} p={1}>
-            <img src="/logo.webp" alt="Engercon Engenharia" />
+          <Box width="100%" bgcolor={theme.palette.background.default} p={1}>
+            <img src="/logo.webp" alt="Engercon" />
           </Box>
           <Divider />
           <Box flex={1}>
