@@ -1,9 +1,7 @@
-import { FormContainer, TextFieldElement } from 'react-hook-form-mui'
-import { iClass, iPageProps } from '../../shared/interfaces'
 import { useEffect, useState } from 'react'
-import { BasePage, BoxResp, SelectClass } from '../../shared/components'
+import { useNavigate } from 'react-router-dom'
+import { FormContainer, TextFieldElement } from 'react-hook-form-mui'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { schoolUpdateSchema } from '../../shared/schemas'
 import {
   Box,
   Button,
@@ -14,9 +12,15 @@ import {
   DialogTitle,
   Typography,
 } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import {
+  LayoutContentFull,
+  LayoutFull,
+  SelectClass,
+  iClass,
+  schoolUpdateSchema,
+} from '../../shared'
 
-export const EditClassPage = ({ back }: iPageProps) => {
+export const EditClassPage = () => {
   const navigate = useNavigate()
   // const { updateSchool, schoolSelect } = useSchoolContext();
   const [classSelect, setClassSelect] = useState<iClass>()
@@ -27,7 +31,7 @@ export const EditClassPage = ({ back }: iPageProps) => {
 
   return (
     <>
-      <BasePage isProfile back={back}>
+      <LayoutFull>
         <FormContainer
           // onSuccess={(data) => {
           //   if (schoolSelect)
@@ -35,7 +39,7 @@ export const EditClassPage = ({ back }: iPageProps) => {
           // }}
           resolver={zodResolver(schoolUpdateSchema)}
         >
-          <BoxResp isProfile>
+          <LayoutContentFull>
             {classSelect && (
               <Box>
                 <Typography>Informações Atuais</Typography>
@@ -53,10 +57,10 @@ export const EditClassPage = ({ back }: iPageProps) => {
             <Button variant="contained" type="submit" fullWidth>
               Enviar
             </Button>
-          </BoxResp>
+          </LayoutContentFull>
         </FormContainer>
-      </BasePage>
-      <Dialog open={!classSelect} onClose={() => navigate(back || '/')}>
+      </LayoutFull>
+      <Dialog open={!classSelect} onClose={() => navigate('/')}>
         <DialogTitle>Editar Turma</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -68,7 +72,7 @@ export const EditClassPage = ({ back }: iPageProps) => {
             </Box>
           </FormContainer>
           <DialogActions>
-            <Button onClick={() => navigate(back || '/')}>Cancelar</Button>
+            <Button onClick={() => navigate('/')}>Cancelar</Button>
           </DialogActions>
         </DialogContent>
       </Dialog>

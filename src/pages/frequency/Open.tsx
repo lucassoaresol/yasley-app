@@ -11,7 +11,7 @@ import {
   useSchoolContext,
   usePaginationContext,
   apiUsingNow,
-  LayoutBasePage,
+  LayoutDrawer,
   TableBase,
   Footer,
   useParamsContext,
@@ -82,7 +82,7 @@ export const FrequencyOpenPage = () => {
   if (!schoolRetrieve) return <Navigate to="/" />
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <Chip
           label="Em Aberto"
@@ -95,6 +95,6 @@ export const FrequencyOpenPage = () => {
         {data?.map((el) => <CardFrequency key={el.id} freq={el} />)}
       </TableBase>
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   Avatar,
   Box,
@@ -14,14 +15,13 @@ import {
   useTheme,
 } from '@mui/material'
 import {
+  LayoutFull,
+  apiUsingNow,
+  iClass,
   useAppThemeContext,
   useClassContext,
   useSchoolContext,
-} from '../../shared/contexts'
-import { useEffect, useState } from 'react'
-import { iClass, iPageProps } from '../../shared/interfaces'
-import { apiUsingNow } from '../../shared/services'
-import { BasePage } from '../../shared/components'
+} from '../../shared'
 
 interface iCardClassProps {
   el: iClass
@@ -99,7 +99,7 @@ const CardClass = ({ el, theme }: iCardClassProps) => {
   )
 }
 
-export const ActiveClassPage = ({ back }: iPageProps) => {
+export const ActiveClassPage = () => {
   const theme = useTheme()
   const { setLoading } = useAppThemeContext()
   const { listClassData, setListClassData } = useClassContext()
@@ -117,7 +117,7 @@ export const ActiveClassPage = ({ back }: iPageProps) => {
   }, [])
 
   return (
-    <BasePage isProfile back={back}>
+    <LayoutFull>
       {listClassData && listClassData.length > 0 ? (
         <Box display="flex" flexDirection="column" gap={theme.spacing(2)}>
           {listClassData.map((el) => (
@@ -127,6 +127,6 @@ export const ActiveClassPage = ({ back }: iPageProps) => {
       ) : (
         <Typography>Nenhuma turma para ativar no momento!</Typography>
       )}
-    </BasePage>
+    </LayoutFull>
   )
 }

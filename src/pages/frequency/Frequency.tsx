@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import { Checklist } from '@mui/icons-material'
 import { Chip } from '@mui/material'
 import {
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBasePage,
   Tools,
   Footer,
@@ -41,7 +41,7 @@ export const FrequencyPage = () => {
   }
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBasePage>
           <Chip
@@ -56,6 +56,6 @@ export const FrequencyPage = () => {
       <TabsFrequencyPage value={year_id} />
       <ViewFrequencyPage />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

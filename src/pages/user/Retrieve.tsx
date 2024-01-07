@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Outlet, useParams } from 'react-router-dom'
 import {
   useUserContext,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleUserRetrievePage,
   Tools,
   TabsUserRetrievePage,
@@ -23,10 +23,10 @@ export const RetrieveUserPage = () => {
   if (view) return <Outlet />
 
   return (
-    <LayoutBasePage title={<TitleUserRetrievePage />} tools={<Tools isBack />}>
+    <LayoutDrawer title={<TitleUserRetrievePage />} tools={<Tools isBack />}>
       <TabsUserRetrievePage value={view} />
       <ViewRetrieveUserPage />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

@@ -4,7 +4,7 @@ import { Outlet, useParams } from 'react-router-dom'
 import {
   useAppThemeContext,
   useVerifySchool,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleSchoolDashPage,
   CalendarDashCommon,
   Footer,
@@ -23,7 +23,7 @@ export const DashboardSchoolPage = () => {
   if (view) return <Outlet />
 
   return (
-    <LayoutBasePage title={<TitleSchoolDashPage />}>
+    <LayoutDrawer title={<TitleSchoolDashPage />}>
       <Box my={1} mx={2} component={Paper} variant="outlined">
         <Card>
           <CardContent>
@@ -53,6 +53,6 @@ export const DashboardSchoolPage = () => {
         </Card>
       </Box>
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

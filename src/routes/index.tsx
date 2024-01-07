@@ -8,9 +8,10 @@ import {
   EditProfilePage,
   FrequencyPage,
   HomePage,
-  Login,
+  LoginPage,
   PasswordPage,
   PeriodPage,
+  RecoveryPage,
   RequestPage,
   RetrieveClassPage,
   RetrievePeriodPage,
@@ -18,6 +19,7 @@ import {
   RetrieveUserPage,
   SchoolPage,
   StudentPage,
+  TokenPage,
   UserPage,
   ViewClassPage,
   ViewDashboardSchoolPage,
@@ -29,8 +31,10 @@ import { ProtectedAuth } from '../shared'
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/recovery" element={<RecoveryPage />} />
       <Route path="/password/:userId/:token" element={<PasswordPage />} />
+      <Route path="/token/:token" element={<TokenPage />} />
       <Route element={<ProtectedAuth />}>
         <Route path="/dash" element={<HomePage isHome />} />
         <Route path="/user" element={<UserPage />}>

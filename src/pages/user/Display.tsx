@@ -5,7 +5,7 @@ import {
   Tools,
   TitleUserViewFrequencyPage,
   TitleUserViewHistoryPage,
-  LayoutBasePage,
+  LayoutDrawer,
   TabsUserRetrievePage,
   Footer,
 } from '../../shared'
@@ -39,10 +39,10 @@ export const ViewUserPage = () => {
   }
 
   return (
-    <LayoutBasePage title={title} tools={tools}>
+    <LayoutDrawer title={title} tools={tools}>
       <TabsUserRetrievePage value={view} />
       {viewData}
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

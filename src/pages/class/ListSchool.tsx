@@ -10,7 +10,7 @@ import {
   usePaginationContext,
   useParamsContext,
   apiSchool,
-  LayoutBasePage,
+  LayoutDrawer,
   Tools,
   TableBase,
   Footer,
@@ -98,7 +98,7 @@ export const ListSchoolPage = () => {
   }, [yearData, query, search, infreq])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={<></>}
       tools={
         <Tools
@@ -115,6 +115,6 @@ export const ListSchoolPage = () => {
         {listSchoolData?.map((el) => <CardSchool key={el.id} school={el} />)}
       </TableBase>
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

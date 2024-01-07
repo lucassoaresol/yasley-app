@@ -9,7 +9,7 @@
 //   useSchoolContext,
 // } from '../../shared/contexts'
 // import { classSchoolCreateSchema } from '../../shared/schemas'
-// import { LayoutBasePage } from '../../shared/layouts'
+// import { LayoutDrawer } from '../../shared/layouts'
 
 // export const DefineSchoolsPage = () => {
 //   const [searchParams] = useSearchParams()
@@ -24,7 +24,7 @@
 //   const back = id ? `/school/class?id=${id}&order=name` : undefined
 
 //   return (
-//     <LayoutBasePage title="Definir Escola" tools={<Tools back={back} isHome />}>
+//     <LayoutDrawer title="Definir Escola" tools={<Tools back={back} isHome />}>
 //       <FormContainer
 //         onSuccess={(data) => {
 //           if (yearData) createClassSchool(data, yearData.id, school_id, back)
@@ -55,6 +55,6 @@
 //         </Box>
 //       </FormContainer>
 //       <Footer />
-//     </LayoutBasePage>
+//     </LayoutDrawer>
 //   )
 // }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
-import { CompLoading, First, useAuthContext } from '../../../shared'
+import { FirstPage } from '../../../pages'
+import { CompLoading, useAuthContext } from '../../../shared'
 
 export const ProtectedAuth = () => {
   const { profileUser, isAuthenticated } = useAuthContext()
@@ -14,9 +15,9 @@ export const ProtectedAuth = () => {
   return loading ? (
     <CompLoading loading={loading} />
   ) : isAuthenticated ? (
-    <First>
+    <FirstPage>
       <Outlet />
-    </First>
+    </FirstPage>
   ) : (
     <Navigate to="/login" />
   )

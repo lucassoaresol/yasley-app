@@ -1,16 +1,13 @@
-import { Box, Container, Paper, useMediaQuery, useTheme } from '@mui/material'
-import { iChildren } from '../../interfaces'
+import { Box, Container, Paper, useMediaQuery } from '@mui/material'
+import { iChildren, useAppThemeContext } from '../../shared'
 
-interface iBasePageDefaultProps extends iChildren {
+interface iLayoutFullProps extends iChildren {
   padding?: number
 }
 
-export const BasePageDefault = ({
-  children,
-  padding = 8,
-}: iBasePageDefaultProps) => {
+export const LayoutFull = ({ children, padding = 8 }: iLayoutFullProps) => {
+  const { theme } = useAppThemeContext()
   const matches = useMediaQuery('(max-width:395px)')
-  const theme = useTheme()
 
   return (
     <Box bgcolor={theme.palette.background.default}>

@@ -3,7 +3,7 @@ import { Chip } from '@mui/material'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 import {
-  LayoutBasePage,
+  LayoutDrawer,
   TitleSchoolDashViewPage,
   Footer,
   TabsInfrequencyPage,
@@ -56,7 +56,7 @@ export const ViewDashboardSchoolInfrequencyPage = ({
   }, [getInfrequency, query, school_id, yearData])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleSchoolDashViewPage>
           <Chip
@@ -78,6 +78,6 @@ export const ViewDashboardSchoolInfrequencyPage = ({
         <TableDashboardSchoolInfrequencyPage listData={listData} />
       )}
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

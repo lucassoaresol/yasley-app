@@ -14,6 +14,8 @@ export interface iUserProfile {
   id: string
   name: string
   email?: string
+  is_super: boolean
+  is_worker: boolean
   is_first_access: boolean
   profile?: {
     url: string

@@ -6,7 +6,7 @@ import {
   TitleAdminDash,
 } from '../../shared/components'
 import { useAppThemeContext, useAuthContext } from '../../shared/contexts'
-import { LayoutBasePage } from '../../shared/layouts'
+import { LayoutDrawer } from '../../shared/layouts'
 import { useEffect } from 'react'
 
 export const HomePageAdmin = () => {
@@ -16,7 +16,7 @@ export const HomePageAdmin = () => {
   useEffect(() => refreshUser(), [])
 
   return (
-    <LayoutBasePage title={<TitleAdminDash />}>
+    <LayoutDrawer title={<TitleAdminDash />}>
       <Box
         my={1}
         mx={2}
@@ -52,6 +52,6 @@ export const HomePageAdmin = () => {
         </Card>
       </Box>
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

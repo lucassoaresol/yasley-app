@@ -6,7 +6,7 @@ import {
   usePaginationContext,
   iStudent,
   apiStudent,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBaseItemsPage,
   LabelSchool,
   LabelClass,
@@ -82,7 +82,7 @@ export const ViewClassStudentPage = () => {
 
   return (
     <>
-      <LayoutBasePage
+      <LayoutDrawer
         title={
           <TitleBaseItemsPage>
             <LabelSchool clickable />
@@ -94,7 +94,7 @@ export const ViewClassStudentPage = () => {
         <TabsClassKeyPage value="student" />
         <TableClassStudentPage data={data} handleStudent={handleStudent} />
         <Footer />
-      </LayoutBasePage>
+      </LayoutDrawer>
       {key && <DialogClassStudentPage id={key} getData={list} />}
       {studentData && <DialogRemoveStudent student={studentData} list={list} />}
       {studentData && (

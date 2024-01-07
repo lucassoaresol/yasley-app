@@ -1,7 +1,7 @@
 import { Checklist } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import {
-  LayoutBasePage,
+  LayoutDrawer,
   Tools,
   Footer,
   PaginationTable,
@@ -90,7 +90,7 @@ export const ViewFrequencyYearPage = ({
   }, [define_query, search])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBaseItemsPage>
           <LinkChip
@@ -124,6 +124,6 @@ export const ViewFrequencyYearPage = ({
         </>
       )}
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

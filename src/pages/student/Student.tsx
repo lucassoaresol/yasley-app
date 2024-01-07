@@ -5,7 +5,7 @@ import { Groups } from '@mui/icons-material'
 import { Chip } from '@mui/material'
 import {
   useVerifyYear,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBasePage,
   Tools,
   Footer,
@@ -41,7 +41,7 @@ export const StudentPage = () => {
   }
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBasePage>
           <Chip
@@ -56,6 +56,6 @@ export const StudentPage = () => {
       <TabsStudentPage />
       <ViewStudentPage />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

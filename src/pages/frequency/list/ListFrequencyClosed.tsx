@@ -9,7 +9,7 @@ import {
   useAuthContext,
   usePaginationContext,
   apiUsingNow,
-  LayoutBasePage,
+  LayoutDrawer,
   Tools,
   TableBase,
   Footer,
@@ -76,7 +76,7 @@ export const ListFrequencyClosedAdm = () => {
     }
   }, [yearData, date])
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={`Frequências Realizadas ${date ? '- ' + date : ''}`}
       tools={<Tools isHome />}
     >
@@ -84,6 +84,6 @@ export const ListFrequencyClosedAdm = () => {
         {data?.map((el) => <CardFrequency key={el.id} freq={el} />)}
       </TableBase>
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

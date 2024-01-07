@@ -5,7 +5,7 @@ import {
   usePaginationContext,
   iStudent,
   apiStudent,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBaseItemsPage,
   LinkChip,
   LabelYear,
@@ -73,7 +73,7 @@ export const ViewStudentYearPage = ({ year_id }: iViewStudentYearPageProps) => {
   }, [define_query, search])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBaseItemsPage>
           <LinkChip
@@ -97,6 +97,6 @@ export const ViewStudentYearPage = ({ year_id }: iViewStudentYearPageProps) => {
         <DialogTransferStudent student={studentData} list={list} />
       )}
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

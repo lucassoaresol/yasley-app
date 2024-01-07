@@ -4,7 +4,7 @@ import { Chip } from '@mui/material'
 import { School } from '@mui/icons-material'
 import {
   useVerifySchool,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBasePage,
   Tools,
   Footer,
@@ -27,7 +27,7 @@ export const SchoolPage = () => {
   if (view) return <ViewSchoolUtilPage />
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBasePage>
           <Chip
@@ -52,6 +52,6 @@ export const SchoolPage = () => {
       <TabsSchoolPage />
       <ViewSchoolPage />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

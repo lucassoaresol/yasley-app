@@ -4,7 +4,7 @@ import { Category } from '@mui/icons-material'
 import { Chip } from '@mui/material'
 import {
   useVerifyUser,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBasePage,
   Tools,
   Footer,
@@ -22,7 +22,7 @@ export const CategoryPage = () => {
   if (user_id) return <Outlet />
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBasePage>
           <Chip
@@ -36,6 +36,6 @@ export const CategoryPage = () => {
     >
       <ViewCategoryPage />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

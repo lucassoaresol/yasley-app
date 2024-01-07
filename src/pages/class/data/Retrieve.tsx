@@ -8,7 +8,7 @@ import {
   ViewStudent,
   ViewFrequency,
   // ViewInfrequency,
-  LayoutBasePage,
+  LayoutDrawer,
   TabsClassRetrievePage,
   Footer,
 } from '../../../shared'
@@ -60,10 +60,10 @@ export const RetrieveClassPage = () => {
   }, [viewData, class_id])
 
   return (
-    <LayoutBasePage title={title} tools={tools}>
+    <LayoutDrawer title={title} tools={tools}>
       <TabsClassRetrievePage value={viewData} handleChange={handleChange} />
       {view}
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

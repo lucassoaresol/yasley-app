@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react'
 import { School } from '@mui/icons-material'
 import { Chip } from '@mui/material'
 import {
-  LayoutBasePage,
+  LayoutDrawer,
   Tools,
   Footer,
   TitleBasePage,
@@ -44,7 +44,7 @@ export const ViewSchoolUtilPage = () => {
   }, [debounce, getSchools, search, yearData])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBasePage>
           <Chip
@@ -59,6 +59,6 @@ export const ViewSchoolUtilPage = () => {
       <TabsSchoolPage value="util" />
       <TableSchoolUtilPage listData={listData} />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

@@ -62,11 +62,15 @@ export const HeaderLayout = () => {
           open={openConfig}
           title="Configurações"
           icon={<Settings fontSize="small" />}
-          options={[
-            { to: '/user', value: 'Usuários' },
-            // { to: '/user', value: 'Permissões' },
-            { to: '/category', value: 'Categorias' },
-          ]}
+          options={
+            userProfile?.is_super
+              ? [
+                  { to: '/user', value: 'Usuários' },
+                  // { to: '/user', value: 'Permissões' },
+                  { to: '/category', value: 'Categorias' },
+                ]
+              : [{ to: '/category', value: 'Categorias' }]
+          }
         />
       </Box>
       <Box display="flex" alignItems="center" gap={1}>

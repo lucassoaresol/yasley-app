@@ -26,7 +26,7 @@
 //   useSearchParams,
 //   Link as RouterLink,
 // } from 'react-router-dom'
-// import { LayoutBasePage } from '../../../shared/layouts'
+// import { LayoutDrawer } from '../../../shared/layouts'
 // import { EventAvailable, Group, School } from '@mui/icons-material'
 // import {
 //   defineBgColorFrequency,
@@ -99,7 +99,7 @@
 //   }
 
 //   return (
-//     <LayoutBasePage
+//     <LayoutDrawer
 //       title={
 //         <Breadcrumbs aria-label="breadcrumb">
 //           <Link underline="none" color="inherit" component={RouterLink} to="/">
@@ -140,6 +140,6 @@
 //       </TableBase>
 //       <Box height={20} />
 //       <Footer />
-//     </LayoutBasePage>
+//     </LayoutDrawer>
 //   )
 // }

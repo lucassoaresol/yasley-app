@@ -7,7 +7,7 @@ import {
   usePaginationContext,
   iClass,
   apiClass,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleSchoolDashViewPage,
   Tools,
   TabsYear,
@@ -59,7 +59,7 @@ export const ViewDashboardSchoolClassPage = () => {
 
   return (
     <>
-      <LayoutBasePage
+      <LayoutDrawer
         title={
           <TitleSchoolDashViewPage>
             <Chip
@@ -78,7 +78,7 @@ export const ViewDashboardSchoolClassPage = () => {
           </Box>
         </Box>
         <Footer />
-      </LayoutBasePage>
+      </LayoutDrawer>
     </>
   )
 }

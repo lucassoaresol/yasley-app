@@ -10,16 +10,16 @@ import {
   useDrawerContext,
 } from '../../shared'
 
-interface iLayoutBasePageProps extends iChildren {
+interface iLayoutDrawerProps extends iChildren {
   title: ReactNode
   tools?: ReactNode
 }
 
-export const LayoutBasePage = ({
+export const LayoutDrawer = ({
   children,
   title,
   tools,
-}: iLayoutBasePageProps) => {
+}: iLayoutDrawerProps) => {
   const { theme, smDown } = useAppThemeContext()
   const { toggleDrawerOpen } = useDrawerContext()
 

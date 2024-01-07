@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom'
 import { Today } from '@mui/icons-material'
 import {
   useAppThemeContext,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBaseItemsPage,
   LinkChip,
   LabelYear,
@@ -18,7 +18,7 @@ export const RetrievePeriodPage = () => {
   const view = searchParams.get('view') || undefined
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBaseItemsPage>
           <LinkChip
@@ -34,6 +34,6 @@ export const RetrievePeriodPage = () => {
       <TabsPeriodRetrievePage value={view} />
       <ViewRetrievePeriodPage />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

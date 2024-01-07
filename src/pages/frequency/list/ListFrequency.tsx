@@ -16,7 +16,7 @@ import {
   usePaginationContext,
   iHeadCell,
   apiUsingNow,
-  LayoutBasePage,
+  LayoutDrawer,
   TableBase,
   Footer,
   useParamsContext,
@@ -114,7 +114,7 @@ export const ListFrequencyPage = () => {
   if (!schoolRetrieve) return <Navigate to="/" />
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="none" color="inherit" component={RouterLink} to="/">
@@ -156,6 +156,6 @@ export const ListFrequencyPage = () => {
         ))}
       </TableBase>
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

@@ -4,7 +4,7 @@ import { FormContainer, PasswordElement } from 'react-hook-form-mui'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
   useAuthContext,
-  LayoutBasePage,
+  LayoutDrawer,
   userPasswordSchema,
   Footer,
   LabelProfile,
@@ -34,7 +34,7 @@ export const EditPasswordPage = () => {
   }
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBaseItemsPage>
           <LabelProfile />
@@ -101,6 +101,6 @@ export const EditPasswordPage = () => {
         </Box>
       </FormContainer>
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

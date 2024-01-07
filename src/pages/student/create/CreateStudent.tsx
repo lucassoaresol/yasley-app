@@ -1,9 +1,13 @@
-import { useSchoolContext, useStudentContext } from '../../../shared/contexts'
-import { BoxResp, SelectClass } from '../../../shared/components'
 import { FormContainer, TextFieldElement } from 'react-hook-form-mui'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { studentCreateSchema } from '../../../shared/schemas'
 import { Button } from '@mui/material'
+import {
+  LayoutContentFull,
+  SelectClass,
+  studentCreateSchema,
+  useSchoolContext,
+  useStudentContext,
+} from '../../../shared'
 
 export const CreateStudentPage = () => {
   const { schoolRetrieve } = useSchoolContext()
@@ -17,7 +21,7 @@ export const CreateStudentPage = () => {
         }}
         resolver={zodResolver(studentCreateSchema)}
       >
-        <BoxResp isProfile>
+        <LayoutContentFull>
           <TextFieldElement name="name" label="Nome" required fullWidth />
           <TextFieldElement
             name="registry"
@@ -29,7 +33,7 @@ export const CreateStudentPage = () => {
           <Button variant="contained" type="submit" fullWidth>
             Salvar
           </Button>
-        </BoxResp>
+        </LayoutContentFull>
       </FormContainer>
     </>
   )

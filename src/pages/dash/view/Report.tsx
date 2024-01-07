@@ -1,11 +1,7 @@
 import { Chip } from '@mui/material'
 import { Summarize } from '@mui/icons-material'
 import { useParams, useSearchParams } from 'react-router-dom'
-import {
-  LayoutBasePage,
-  TitleSchoolDashViewPage,
-  Footer,
-} from '../../../shared'
+import { LayoutDrawer, TitleSchoolDashViewPage, Footer } from '../../../shared'
 import {
   CardDashboardSchoolReportPage,
   TabsDashboardSchoolReportPage,
@@ -17,7 +13,7 @@ export const ViewDashboardSchoolReportPage = () => {
   const view = searchParams.get('view') || undefined
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleSchoolDashViewPage>
           <Chip
@@ -34,6 +30,6 @@ export const ViewDashboardSchoolReportPage = () => {
       />
       <CardDashboardSchoolReportPage view={view} />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

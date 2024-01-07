@@ -15,7 +15,7 @@ import {
   Link,
   Paper,
 } from '@mui/material'
-import { LayoutBasePage } from '../../../shared/layouts'
+import { LayoutDrawer } from '../../../shared/layouts'
 import {
   CalendarStudent,
   Footer,
@@ -66,7 +66,7 @@ export const StudentFrequencyPage = () => {
   }
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="none" color="inherit" component={RouterLink} to="/">
@@ -173,6 +173,6 @@ export const StudentFrequencyPage = () => {
         </Card>
       </Box>
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

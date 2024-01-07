@@ -2,7 +2,7 @@ import { Groups } from '@mui/icons-material'
 import { Chip } from '@mui/material'
 import { useSearchParams } from 'react-router-dom'
 import {
-  LayoutBasePage,
+  LayoutDrawer,
   TitleSchoolDashViewPage,
   Tools,
   Footer,
@@ -17,7 +17,7 @@ export const ViewDashboardSchoolStudentPage = () => {
   const [searchParams] = useSearchParams()
   const view = searchParams.get('view') || undefined
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleSchoolDashViewPage>
           <Chip
@@ -36,6 +36,6 @@ export const ViewDashboardSchoolStudentPage = () => {
         <ViewDashboardSchoolStudentAllPage />
       )}
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

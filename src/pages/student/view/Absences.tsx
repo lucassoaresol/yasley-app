@@ -6,7 +6,7 @@ import {
   useAuthContext,
   usePaginationContext,
   apiStudent,
-  LayoutBasePage,
+  LayoutDrawer,
   Tools,
   PaginationTable,
   Footer,
@@ -72,7 +72,7 @@ export const ViewStudentAbsencesPage = () => {
   }, [define_query, search, year_id_data])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBasePage>
           <Chip
@@ -91,6 +91,6 @@ export const ViewStudentAbsencesPage = () => {
         onClick={onClick}
       />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

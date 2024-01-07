@@ -5,7 +5,7 @@ import { Chip } from '@mui/material'
 import {
   useVerifyClass,
   useVerifyYear,
-  LayoutBasePage,
+  LayoutDrawer,
   Tools,
   Footer,
   TitleBasePage,
@@ -30,7 +30,7 @@ export const ClassPage = () => {
   if (year_id) return <ViewClassYearPage year_id={year_id} />
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBasePage>
           <Chip
@@ -45,6 +45,6 @@ export const ClassPage = () => {
       <TabsClassPage />
       <ViewClassPage />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

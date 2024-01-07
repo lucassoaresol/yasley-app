@@ -37,6 +37,7 @@ export interface iSelectBase {
 }
 
 export interface iButtonBaseProps {
+  fullWidth?: boolean
   title: string
   href?: string
   startIcon?: ReactNode

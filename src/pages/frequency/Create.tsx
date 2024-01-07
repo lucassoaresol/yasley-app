@@ -7,7 +7,7 @@ import {
   Footer,
   GridDashContent,
   GridDashOrgan,
-  LayoutBasePage,
+  LayoutDrawer,
   apiUsingNow,
   iDashClass,
   useAppThemeContext,
@@ -89,7 +89,7 @@ export const CreateFrequencyPage = () => {
   // );
 
   return (
-    <LayoutBasePage title="">
+    <LayoutDrawer title="">
       <Box my={1} mx={2} component={Paper} variant="outlined">
         <Card>
           <CardContent>
@@ -163,6 +163,6 @@ export const CreateFrequencyPage = () => {
         </Card>
       </Box>
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

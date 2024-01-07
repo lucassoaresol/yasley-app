@@ -6,7 +6,7 @@ import {
   useFrequencyContext,
   useVerifyFrequency,
   Tools,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleSchoolDashViewPage,
   LinkChip,
   Footer,
@@ -119,7 +119,7 @@ export const ViewDashboardSchoolFrequencyDataPage = ({
   }, [frequencySelect, frequency_id, isAlter, schoolSelect])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleSchoolDashViewPage>
           <LinkChip
@@ -134,6 +134,6 @@ export const ViewDashboardSchoolFrequencyDataPage = ({
     >
       {data}
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

@@ -7,7 +7,7 @@ import {
   usePaginationContext,
   iStudent,
   apiStudent,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBaseItemsPage,
   LinkChip,
   Tools,
@@ -70,7 +70,7 @@ export const ViewStudentNonePage = () => {
   }, [define_query, search])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBaseItemsPage>
           <LinkChip
@@ -95,6 +95,6 @@ export const ViewStudentNonePage = () => {
       />
       {studentData && <DialogGroupStudent student={studentData} list={list} />}
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

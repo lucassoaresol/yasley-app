@@ -18,6 +18,8 @@ export const ButtonDest = ({
   onClick,
   isResp,
   isHome,
+  fullWidth,
+  color = 'primary',
 }: iButtonDestProps) => {
   const { smDown } = useAppThemeContext()
 
@@ -32,7 +34,7 @@ export const ButtonDest = ({
   ) : isHome ? (
     smDown && (
       <Tooltip title={title}>
-        <IconButton color="primary" component={Link} to={to} onClick={onClick}>
+        <IconButton color={color} component={Link} to={to} onClick={onClick}>
           {startIcon && startIcon}
           {endIcon && endIcon}
         </IconButton>
@@ -47,6 +49,8 @@ export const ButtonDest = ({
       onClick={onClick}
       component={Link}
       to={to}
+      fullWidth={fullWidth}
+      color={color}
     >
       {title}
     </Button>

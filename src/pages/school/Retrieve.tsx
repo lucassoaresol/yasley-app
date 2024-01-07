@@ -4,7 +4,7 @@ import { School } from '@mui/icons-material'
 import {
   useAppThemeContext,
   useSchoolContext,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBaseItemsPage,
   LinkChip,
   LabelSchool,
@@ -28,7 +28,7 @@ export const RetrieveSchoolPage = () => {
   if (view) return <Outlet />
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBaseItemsPage>
           <LinkChip
@@ -44,6 +44,6 @@ export const RetrieveSchoolPage = () => {
       <TabsSchoolRetrievePage value={view} />
       <ViewRetrieveSchoolPage />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

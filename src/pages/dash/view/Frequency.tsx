@@ -6,7 +6,7 @@ import { useParams, useSearchParams } from 'react-router-dom'
 import {
   useDebounce,
   usePaginationContext,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleSchoolDashViewPage,
   Tools,
   Footer,
@@ -96,7 +96,7 @@ export const ViewDashboardSchoolFrequencyPage = ({
   }, [define_query, search])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleSchoolDashViewPage>
           <Chip
@@ -133,6 +133,6 @@ export const ViewDashboardSchoolFrequencyPage = ({
         onClick={onClick}
       />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

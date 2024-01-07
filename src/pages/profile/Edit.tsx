@@ -20,7 +20,7 @@ import {
   apiUser,
   iAvatarRequest,
   apiImage,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBaseItemsPage,
   LabelProfile,
   userUpdateSchema,
@@ -73,7 +73,7 @@ export const EditProfilePage = () => {
 
   return (
     <>
-      <LayoutBasePage
+      <LayoutDrawer
         title={
           <TitleBaseItemsPage>
             <LabelProfile />
@@ -152,7 +152,7 @@ export const EditProfilePage = () => {
           </Box>
         </FormContainer>
         <Footer />
-      </LayoutBasePage>
+      </LayoutDrawer>
       <DialogBaseChildren
         open={open}
         onClose={onClose}

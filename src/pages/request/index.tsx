@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { DoneAll, LibraryAddCheck, RemoveDone } from '@mui/icons-material'
 import { Box, Chip, Typography } from '@mui/material'
 import {
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBasePage,
   Footer,
   Tools,
@@ -54,7 +54,7 @@ export const RequestPage = () => {
   useEffect(() => getRequest(), [])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBasePage>
           <Chip
@@ -100,6 +100,6 @@ export const RequestPage = () => {
     >
       <ViewRequestPage listData={requestData} />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

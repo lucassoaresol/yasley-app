@@ -13,7 +13,7 @@ import {
   usePaginationContext,
   iClass,
   apiClass,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBaseItemsPage,
   LabelSchool,
   Tools,
@@ -73,7 +73,7 @@ export const ViewSchoolClassPage = () => {
 
   return (
     <>
-      <LayoutBasePage
+      <LayoutDrawer
         title={
           <TitleBaseItemsPage>
             <LabelSchool clickable />
@@ -94,7 +94,7 @@ export const ViewSchoolClassPage = () => {
           </Box>
         </Box>
         <Footer />
-      </LayoutBasePage>
+      </LayoutDrawer>
       {school_id && (
         <DialogSchoolClassPage
           school_id={school_id}

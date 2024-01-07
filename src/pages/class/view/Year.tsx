@@ -4,7 +4,7 @@ import {
   usePaginationContext,
   iClass,
   apiClass,
-  LayoutBasePage,
+  LayoutDrawer,
   Tools,
   PaginationTable,
   Footer,
@@ -66,7 +66,7 @@ export const ViewClassYearPage = ({ year_id }: iViewClassYearPageProps) => {
   }, [define_query, search])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBaseItemsPage>
           <LinkChip
@@ -86,6 +86,6 @@ export const ViewClassYearPage = ({ year_id }: iViewClassYearPageProps) => {
         onClick={onClick}
       />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

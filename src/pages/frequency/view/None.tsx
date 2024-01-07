@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react'
 import { Checklist, Close } from '@mui/icons-material'
 import { Chip } from '@mui/material'
 import {
-  LayoutBasePage,
+  LayoutDrawer,
   Tools,
   Footer,
   PaginationTable,
@@ -71,7 +71,7 @@ export const ViewFrequencyNonePage = () => {
   }, [define_query, search])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBaseItemsPage>
           <LinkChip
@@ -104,6 +104,6 @@ export const ViewFrequencyNonePage = () => {
         </>
       )}
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

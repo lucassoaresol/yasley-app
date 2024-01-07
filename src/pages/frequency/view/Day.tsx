@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import { Checklist, EventAvailable } from '@mui/icons-material'
 import {
   usePaginationContext,
-  LayoutBasePage,
+  LayoutDrawer,
   Footer,
   useParamsContext,
   LinkChip,
@@ -74,7 +74,7 @@ export const ViewFrequencyDayPage = () => {
   }, [define_query, search])
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBaseItemsPage>
           <LinkChip
@@ -107,6 +107,6 @@ export const ViewFrequencyDayPage = () => {
         </>
       )}
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

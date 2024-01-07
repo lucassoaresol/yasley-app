@@ -9,7 +9,7 @@ import {
   useDialogContext,
   iSchool,
   apiSchool,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBaseItemsPage,
   LabelUser,
   Tools,
@@ -60,7 +60,7 @@ export const ViewUserSchoolPage = () => {
 
   return (
     <>
-      <LayoutBasePage
+      <LayoutDrawer
         title={
           <TitleBaseItemsPage>
             <LabelUser clickable to={`/user/${user_id}`} />
@@ -76,7 +76,7 @@ export const ViewUserSchoolPage = () => {
         <TabsUserRetrievePage value="school" />
         <TableUserSchoolPage listData={listData} />
         <Footer />
-      </LayoutBasePage>
+      </LayoutDrawer>
       {userSelect && (
         <DialogCreateSchoolServer
           getData={list}

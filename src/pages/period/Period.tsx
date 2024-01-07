@@ -4,7 +4,7 @@ import { Today } from '@mui/icons-material'
 import { Chip } from '@mui/material'
 import {
   useVerifyYear,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBasePage,
   Tools,
   Footer,
@@ -22,7 +22,7 @@ export const PeriodPage = () => {
   if (year_id) return <Outlet />
 
   return (
-    <LayoutBasePage
+    <LayoutDrawer
       title={
         <TitleBasePage>
           <Chip
@@ -36,6 +36,6 @@ export const PeriodPage = () => {
     >
       <ViewPeriodPage />
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }

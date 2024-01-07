@@ -6,7 +6,7 @@ import {
   usePaginationContext,
   iSchoolUser,
   apiSchoolRetrieve,
-  LayoutBasePage,
+  LayoutDrawer,
   TitleBaseItemsPage,
   LabelSchool,
   Tools,
@@ -52,7 +52,7 @@ export const ViewSchoolServerPage = () => {
 
   return (
     <>
-      <LayoutBasePage
+      <LayoutDrawer
         title={
           <TitleBaseItemsPage>
             <LabelSchool clickable />
@@ -78,7 +78,7 @@ export const ViewSchoolServerPage = () => {
         <TabsSchoolRetrievePage value="server" />
         <TableSchoolServerPage listData={listData} />
         <Footer />
-      </LayoutBasePage>
+      </LayoutDrawer>
       <DialogCreateServer getServer={getServer} school_id={school_id} />
     </>
   )

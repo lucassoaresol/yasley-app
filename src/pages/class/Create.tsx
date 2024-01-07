@@ -1,27 +1,29 @@
 import { FormContainer, TextFieldElement } from 'react-hook-form-mui'
-import { BasePage, BoxResp } from '../../shared/components'
-import { Button } from '@mui/material'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { classCreateSchema } from '../../shared/schemas'
-import { useClassContext } from '../../shared/contexts'
-import { iPageProps } from '../../shared/interfaces'
+import { Button } from '@mui/material'
+import {
+  LayoutContentFull,
+  LayoutFull,
+  classCreateSchema,
+  useClassContext,
+} from '../../shared'
 
-export const CreateClassPage = ({ back }: iPageProps) => {
+export const CreateClassPage = () => {
   const { createClass } = useClassContext()
 
   return (
-    <BasePage isProfile back={back}>
+    <LayoutFull>
       <FormContainer
-        onSuccess={(data) => createClass(data, back)}
+        onSuccess={(data) => createClass(data)}
         resolver={zodResolver(classCreateSchema)}
       >
-        <BoxResp isProfile>
+        <LayoutContentFull>
           <TextFieldElement name="name" label="Nome" required fullWidth />
           <Button variant="contained" type="submit" fullWidth>
             Salvar
           </Button>
-        </BoxResp>
+        </LayoutContentFull>
       </FormContainer>
-    </BasePage>
+    </LayoutFull>
   )
 }

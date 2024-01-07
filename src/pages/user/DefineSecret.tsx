@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { apiUsingNow } from '../../shared/services'
 import { iUser } from '../../shared/interfaces'
 import { Box, Grid, Paper, Typography } from '@mui/material'
-import { LayoutBasePage } from '../../shared/layouts'
+import { LayoutDrawer } from '../../shared/layouts'
 
 export const DefineSecretPage = () => {
   const { setLoading } = useAppThemeContext()
@@ -23,7 +23,7 @@ export const DefineSecretPage = () => {
   }, [])
 
   return (
-    <LayoutBasePage title="Definir Secretário">
+    <LayoutDrawer title="Definir Secretário">
       <FormContainer
         onSuccess={(data) => {
           if (secretData)
@@ -86,6 +86,6 @@ export const DefineSecretPage = () => {
         </Box>
       </FormContainer>
       <Footer />
-    </LayoutBasePage>
+    </LayoutDrawer>
   )
 }
